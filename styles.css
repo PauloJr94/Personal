@@ -148,7 +148,7 @@ body {
     height: auto;
 }
 .logo-icon2 {
-    width: 180px;  /* ajuste o tamanho conforme necessário */
+    width: 200px;  /* ajuste o tamanho conforme necessário */
     height: auto;
 }
 
@@ -221,7 +221,7 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    left: 28%;
+    left: 26%;
     width: 800px;
     height: 800px;
     transform: translate(-50%, -50%);
