@@ -270,8 +270,8 @@ body {
   }
 
   .hero-profile::after {
-    width: 375px; /* ligeiramente maior que a imagem da Beathriz */
-    height: 375px;
+    width: 425px; /* ligeiramente maior que a imagem da Beathriz */
+    height: 425px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* mantém centralizada */
