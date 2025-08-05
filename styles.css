@@ -259,18 +259,22 @@ body {
 }
 
 /* 🔄 Ajustes para celular */
-@media (max-width: 768px) {
-    .hero-img {
-        width: 180px;
-        height: 180px;
-    }
+@media (max-width: 480px) {
+  .hero-container {
+    padding-top: 140px !important;
+  }
 
-    .hero-profile::after {
-        width: 350px;
-        height: 350px;
-        top: 55%;
-        opacity: 0.2;
-    }
+  .hero-img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hero-profile::after {
+    width: 350px;
+    height: 350px;
+    top: 55%;
+    opacity: 0.2;
+  }
 }
 
 .hero::before {
@@ -286,7 +290,7 @@ body {
 }
 
 .hero-container {
-    padding-top: 100px;
+    padding-top: 70px;
 }
 
 .hero-content {
