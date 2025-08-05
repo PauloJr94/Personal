@@ -221,21 +221,33 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    left: 25%;
-    width: 800px;
-    height: 800px;
+    left: 30%;
+    width: 600px;
+    height: 600px;
     transform: translate(-50%, -50%);
-    background-image: url('logo.png'); /* ou use '66afc7fd-60d7-4ec7-ba13-37f67e4e1d97.png' */
+    background-image: url('logo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.25; /* 👍 Mais visível. Pode testar com 0.15 ou 0.2 também */
+    opacity: 0.25;
     z-index: -1;
+}
+
+/* 🔄 Ajustes para celular */
+@media (max-width: 768px) {
+    .hero::after {
+        width: 350px;
+        height: 350px;
+        left: 50%; /* Recentraliza para telas pequenas */
+        top: 55%;  /* Ajusta posição vertical */
+        transform: translate(-50%, -50%);
+        opacity: 0.2; /* Pode reduzir se estiver forte demais no mobile */
+    }
 }
 
 .hero-container {
     position: relative;
-    z-index: 1; /* garante que o conteúdo fique acima da imagem */
+    z-index: 1; /* Garante que o conteúdo fique acima da imagem */
 }
 
 .hero::before {
