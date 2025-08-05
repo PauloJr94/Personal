@@ -217,14 +217,39 @@ body {
     overflow: hidden;
 }
 
-.hero::after {
+.hero-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ajusta o tamanho da imagem da Beathriz */
+.hero-img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid var(--primary-color); /* ajuste se quiser remover a borda */
+}
+
+/* Centraliza a imagem e aplica fundo decorativo */
+.hero-profile {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* Logo decorativa atrás da imagem */
+.hero-profile::after {
     content: '';
     position: absolute;
     top: 50%;
-    left: 30%;
-    width: 600px;
-    height: 600px;
-    transform: translate(-50%, -50%);
+    left: 29%;
+    width: 800px;
+    height: 800px;
+    transform: translate(-45%, -50%);
     background-image: url('logo.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -235,19 +260,17 @@ body {
 
 /* 🔄 Ajustes para celular */
 @media (max-width: 768px) {
-    .hero::after {
+    .hero-img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .hero-profile::after {
         width: 350px;
         height: 350px;
-        left: 50%; /* Recentraliza para telas pequenas */
-        top: 55%;  /* Ajusta posição vertical */
-        transform: translate(-50%, -50%);
-        opacity: 0.2; /* Pode reduzir se estiver forte demais no mobile */
+        top: 55%;
+        opacity: 0.2;
     }
-}
-
-.hero-container {
-    position: relative;
-    z-index: 1; /* Garante que o conteúdo fique acima da imagem */
 }
 
 .hero::before {
