@@ -752,3 +752,344 @@ class App {
 
 // Inicializar aplicação
 new App();
+
+// ===== SEÇÃO 1: DÚVIDAS E DICAS (FAQ) =====
+class FAQManager {
+    constructor() {
+        this.faqItems = document.querySelectorAll('.faq-item');
+        this.init();
+    }
+
+    init() {
+        this.faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => this.toggleFAQ(item));
+        });
+
+        // Fechar outros FAQs quando um for aberto (accordion behavior)
+        this.setupAccordionBehavior();
+    }
+
+    toggleFAQ(item) {
+        const isActive = item.classList.contains('active');
+        
+        if (isActive) {
+            item.classList.remove('active');
+        } else {
+            // Fechar outros FAQs abertos
+            this.faqItems.forEach(faqItem => {
+                faqItem.classList.remove('active');
+            });
+            
+            // Abrir o FAQ clicado
+            item.classList.add('active');
+        }
+    }
+
+    setupAccordionBehavior() {
+        // Adicionar suporte para navegação por teclado
+        this.faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.toggleFAQ(item);
+                }
+            });
+            
+            // Tornar focável
+            question.setAttribute('tabindex', '0');
+            question.setAttribute('role', 'button');
+            question.setAttribute('aria-expanded', 'false');
+        });
+    }
+}
+
+// ===== SEÇÃO 2: CARROSSEL DE TRANSFORMAÇÕES =====
+class TransformationsCarousel {
+    constructor() {
+        this.carousel = document.getElementById('transformationsCarousel');
+        this.track = this.carousel?.querySelector('.carousel-track');
+        this.cards = this.carousel?.querySelectorAll('.transformation-card');
+        this.prevBtn = document.getElementById('prevBtn');
+        this.nextBtn = document.getElementById('nextBtn');
+        this.indicators = document.querySelectorAll('.indicator');
+        
+        this.currentSlide = 0;
+        this.totalSlides = this.cards?.length || 0;
+        this.autoplayInterval = null;
+        this.autoplayDelay = 5000;
+        
+        if (this.carousel) {
+            this.init();
+        }
+    }
+
+    init() {
+        this.setupEventListeners();
+        this.setupTouchEvents();
+        this.setupKeyboardNavigation();
+        this.startAutoplay();
+        this.updateCarousel();
+    }
+
+    setupEventListeners() {
+        // Botões de navegação
+        this.prevBtn?.addEventListener('click', () => this.prevSlide());
+        this.nextBtn?.addEventListener('click', () => this.nextSlide());
+
+        // Indicadores
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+
+        // Pausar autoplay no hover
+        this.carousel.addEventListener('mouseenter', () => this.stopAutoplay());
+        this.carousel.addEventListener('mouseleave', () => this.startAutoplay());
+    }
+
+    setupTouchEvents() {
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        this.carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            this.stopAutoplay();
+        });
+
+        this.carousel.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            currentX = e.touches[0].clientX;
+        });
+
+        this.carousel.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            
+            const diffX = startX - currentX;
+            const threshold = 50;
+
+            if (Math.abs(diffX) > threshold) {
+                if (diffX > 0) {
+                    this.nextSlide();
+                } else {
+                    this.prevSlide();
+                }
+            }
+
+            isDragging = false;
+            this.startAutoplay();
+        });
+    }
+
+    setupKeyboardNavigation() {
+        document.addEventListener('keydown', (e) => {
+            if (!this.isCarouselInView()) return;
+
+            switch (e.key) {
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    this.prevSlide();
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    this.nextSlide();
+                    break;
+            }
+        });
+    }
+
+    isCarouselInView() {
+        const rect = this.carousel.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    prevSlide() {
+        this.currentSlide = this.currentSlide === 0 ? this.totalSlides - 1 : this.currentSlide - 1;
+        this.updateCarousel();
+    }
+
+    nextSlide() {
+        this.currentSlide = this.currentSlide === this.totalSlides - 1 ? 0 : this.currentSlide + 1;
+        this.updateCarousel();
+    }
+
+    goToSlide(index) {
+        this.currentSlide = index;
+        this.updateCarousel();
+    }
+
+    updateCarousel() {
+        // Atualizar posição do track
+        const translateX = -this.currentSlide * 100;
+        this.track.style.transform = `translateX(${translateX}%)`;
+
+        // Atualizar cards ativas
+        this.cards.forEach((card, index) => {
+            card.classList.toggle('active', index === this.currentSlide);
+        });
+
+        // Atualizar indicadores
+        this.indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === this.currentSlide);
+        });
+    }
+
+    startAutoplay() {
+        this.stopAutoplay();
+        this.autoplayInterval = setInterval(() => {
+            this.nextSlide();
+        }, this.autoplayDelay);
+    }
+
+    stopAutoplay() {
+        if (this.autoplayInterval) {
+            clearInterval(this.autoplayInterval);
+            this.autoplayInterval = null;
+        }
+    }
+}
+
+// ===== SEÇÃO 3: ANIMAÇÕES DOS DEPOIMENTOS =====
+class TestimonialsAnimations {
+    constructor() {
+        this.testimonialCards = document.querySelectorAll('.testimonial-card');
+        this.init();
+    }
+
+    init() {
+        this.setupScrollAnimations();
+        this.setupHoverEffects();
+    }
+
+    setupScrollAnimations() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Adicionar delay escalonado para efeito cascata
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        this.testimonialCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(card);
+        });
+    }
+
+    setupHoverEffects() {
+        this.testimonialCards.forEach(card => {
+            const avatar = card.querySelector('.testimonial-avatar');
+            
+            card.addEventListener('mouseenter', () => {
+                if (avatar) {
+                    avatar.style.transform = 'scale(1.1) rotate(5deg)';
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                if (avatar) {
+                    avatar.style.transform = 'scale(1) rotate(0deg)';
+                }
+            });
+        });
+    }
+}
+
+// ===== UTILITÁRIOS PARA TODAS AS SEÇÕES =====
+class SectionsUtils {
+    static smoothScrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            const offsetTop = section.offsetTop - 100;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    static addScrollRevealAnimation(elements, options = {}) {
+        const defaultOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px',
+            ...options
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, defaultOptions);
+
+        elements.forEach(element => {
+            observer.observe(element);
+        });
+    }
+
+    static formatWhatsAppMessage(baseMessage, additionalInfo = '') {
+        const message = `${baseMessage} ${additionalInfo}`.trim();
+        return encodeURIComponent(message);
+    }
+}
+
+// ===== INICIALIZAÇÃO DAS SEÇÕES =====
+class NewSectionsManager {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        // Aguardar DOM estar pronto
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                this.initializeComponents();
+            });
+        } else {
+            this.initializeComponents();
+        }
+    }
+
+    initializeComponents() {
+        // Inicializar FAQ
+        new FAQManager();
+        
+        // Inicializar Carrossel de Transformações
+        new TransformationsCarousel();
+        
+        // Inicializar Animações dos Depoimentos
+        new TestimonialsAnimations();
+        
+        // Adicionar animações de scroll reveal para elementos das novas seções
+        const elementsToAnimate = document.querySelectorAll(
+            '.faq-item, .tip-card, .testimonial-card'
+        );
+        
+        if (elementsToAnimate.length > 0) {
+            SectionsUtils.addScrollRevealAnimation(elementsToAnimate);
+        }
+        
+        console.log('✅ Novas seções (FAQ, Transformações e Depoimentos) carregadas com sucesso!');
+    }
+}
+
+// Inicializar as novas seções
+new NewSectionsManager();
