@@ -270,12 +270,15 @@ body {
   }
 
   .hero-profile::after {
-    width: 350px;
-    height: 350px;
-    top: 55%;
-    opacity: 0.2;
+    width: 280px; /* ligeiramente maior que a imagem da Beathriz */
+    height: 280px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* mantém centralizada */
+    opacity: 0.25;
   }
 }
+
 
 .hero::before {
     content: '';
