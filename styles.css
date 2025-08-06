@@ -300,8 +300,7 @@ body {
     opacity: 0.25;
   }
   .hero-verified{
-    top: 50%;
-    left: 50%;
+
     bottom: 20px;
     right: 20px;
     transform: translate(-50%, -50%); /*Ajuste vertical para cima da foto*/
