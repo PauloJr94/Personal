@@ -304,7 +304,7 @@ body {
     left: 50%;
     bottom: 20px;
     right: 20px;
-    transform: translate(-50%, -100%); /*Ajuste vertical para cima da foto*/
+    transform: translate(-50%, -50%); /*Ajuste vertical para cima da foto*/
   }
 }
 
