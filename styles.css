@@ -210,53 +210,53 @@ body {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    background: var(--gradient-hero);
-    position: relative;
-    overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--gradient-hero);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-container {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 /* Ajusta o tamanho da imagem da Beathriz */
 .hero-img {
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 6px solid var(--primary-color); /* ajuste se quiser remover a borda */
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid var(--primary-color);
 }
 
 /* Centraliza a imagem e aplica fundo decorativo */
 .hero-profile {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 /* Logo decorativa atrás da imagem */
 .hero-profile::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 29%;
-    width: 800px;
-    height: 800px;
-    transform: translate(-45%, -50%);
-    background-image: url('logo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.25;
-    z-index: -1;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 29%;
+  width: 800px;
+  height: 800px;
+  transform: translate(-45%, -50%);
+  background-image: url('logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.25;
+  z-index: -1;
 }
 
 /* 🔄 Ajustes para celular */
@@ -271,15 +271,16 @@ body {
   }
 
   .hero-profile::after {
-    width: 455px; /* ligeiramente maior que a imagem da Beathriz */
+    width: 455px;
     height: 455px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* mantém centralizada */
+    transform: translate(-50%, -50%);
     opacity: 0.25;
   }
+}
 
-  /* 📱📱 TABLET (modo retrato e paisagem) */
+/* 📱📱 TABLET (modo retrato e paisagem) */
 @media (min-width: 481px) and (max-width: 1024px) {
   .hero-container {
     padding-top: 120px;
@@ -291,51 +292,26 @@ body {
   }
 
   .hero-profile::after {
-    max-width: 400px;
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     opacity: 0.25;
   }
 }
-}
 
+/* BACKGROUND EM TODA SEÇÃO HERO */
 .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(16,185,129,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.3;
-    z-index: -1;
-}
-
-.hero-container {
-    padding-top: 70px;
-}
-
-.hero-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: var(--spacing-3xl);
-    align-items: center;
-}
-
-.hero-profile {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.hero-img {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 6px solid transparent;
-    background: var(--gradient-primary);
-    padding: 6px;
-    box-shadow: var(--shadow-xl);
-    animation: float 6s ease-in-out infinite;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("logo.png");
+  opacity: 0.3;
+  z-index: -1;
 }
 
 @keyframes float {
