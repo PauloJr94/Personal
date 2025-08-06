@@ -299,6 +299,13 @@ body {
     transform: translate(-50%, -50%);
     opacity: 0.25;
   }
+  .hero-verified{
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translate(-50%, -150%); /*Ajuste vertical para cima da foto*/
+  }
 }
 
 .hero::before {
