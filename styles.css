@@ -302,7 +302,7 @@ body {
   .hero-verified{
     bottom: 20px;
     right: 20px;
-    transform: translate(-115%, -40%); /*Ajuste vertical para cima da foto*/
+    transform: translate(-100%, -40%); /*Ajuste vertical para cima da foto*/
   }
 }
 
