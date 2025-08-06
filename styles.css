@@ -278,11 +278,6 @@ body {
     transform: translate(-50%, -50%); /* mantém centralizada */
     opacity: 0.25;
   }
-    .hero-verified{
-    bottom: 20px;
-    right: 20px;
-    transform: translate(-100%, -40%); /*Ajuste vertical para cima da foto*/
-  }
 }
 
 /* 📱📱 TABLET (modo retrato e paisagem) */
