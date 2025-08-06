@@ -1172,26 +1172,31 @@ body {
     margin-bottom: var(--spacing-lg);
     font-weight: 500;
 }
-/* 📱 Correção para Celular */
+/* 📱 Correção para CELULAR – Botões de navegação */
 @media (max-width: 480px) {
   .carousel-btn {
     width: 40px;
     height: 40px;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .carousel-prev {
-    left: 10px; /* Deixa dentro da tela */
+    left: 5px;
   }
 
   .carousel-next {
-    right: 10px;
+    right: 5px;
   }
 
-  .carousel-btn:hover {
-    transform: translateY(-50%) scale(1.05); /* Reduz o hover para não estourar */
+  /* Opcional: espaço menor entre os indicadores */
+  .carousel-indicators {
+    gap: 6px;
+    margin-top: var(--spacing-lg);
   }
 }
+
 
 /* ===== SEÇÃO 3: DEPOIMENTOS ===== */
 .testimonials {
