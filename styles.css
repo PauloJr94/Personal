@@ -1172,6 +1172,26 @@ body {
     margin-bottom: var(--spacing-lg);
     font-weight: 500;
 }
+/* 📱 Correção para Celular */
+@media (max-width: 480px) {
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-lg);
+  }
+
+  .carousel-prev {
+    left: 10px; /* Deixa dentro da tela */
+  }
+
+  .carousel-next {
+    right: 10px;
+  }
+
+  .carousel-btn:hover {
+    transform: translateY(-50%) scale(1.05); /* Reduz o hover para não estourar */
+  }
+}
 
 /* ===== SEÇÃO 3: DEPOIMENTOS ===== */
 .testimonials {
