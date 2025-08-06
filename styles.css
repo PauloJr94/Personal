@@ -278,8 +278,24 @@ body {
     transform: translate(-50%, -50%); /* mantém centralizada */
     opacity: 0.25;
   }
-}
 
+  /* 📱📱 TABLET (modo retrato e paisagem) */
+@media (min-width: 481px) and (max-width: 1024px) {
+  .hero-container {
+    padding-top: 120px;
+  }
+
+  .hero-img {
+    width: 240px;
+    height: 240px;
+  }
+
+  .hero-profile::after {
+    max-width: 400px;
+    opacity: 0.25;
+  }
+}
+}
 
 .hero::before {
     content: '';
