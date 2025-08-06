@@ -1172,31 +1172,12 @@ body {
     margin-bottom: var(--spacing-lg);
     font-weight: 500;
 }
-/* 📱 Correção para CELULAR – Botões de navegação */
+/* 📱 Oculta as setas no celular */
 @media (max-width: 480px) {
   .carousel-btn {
-    width: 40px;
-    height: 40px;
-    font-size: var(--font-size-md);
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .carousel-prev {
-    left: 5px;
-  }
-
-  .carousel-next {
-    right: 5px;
-  }
-
-  /* Opcional: espaço menor entre os indicadores */
-  .carousel-indicators {
-    gap: 6px;
-    margin-top: var(--spacing-lg);
+    display: none;
   }
 }
-
 
 /* ===== SEÇÃO 3: DEPOIMENTOS ===== */
 .testimonials {
