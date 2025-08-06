@@ -148,8 +148,9 @@ body {
     height: auto;
 }
 .logo-icon2 {
-    width: 200px;  /* ajuste o tamanho conforme necessário */
+    width: 225px;  /* ajuste o tamanho conforme necessário */
     height: auto;
+    margin-top: -25px; /* Ajuste conforme necessário */
 }
 
 .logo-accent {
@@ -518,16 +519,16 @@ body {
     line-height: 1.6;
 }
 
-.about-image {
+.about-video {
     position: relative;
     border-radius: var(--border-radius-xl);
     overflow: hidden;
 }
 
-.about-img {
+.about-vid {
     width: 100%;
-    height: 800px;
-    object-fit: cover;
+    height: 725px;
+    object-fit: contain;
 }
 
 .about-overlay {
