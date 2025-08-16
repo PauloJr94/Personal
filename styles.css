@@ -1694,3 +1694,15 @@ html {
   font-size: 24px;
   color: #ffffff;  /* branco */
 }
+
+/* lista de contato no rodapé */
+.footer-contact li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-contact i {
+  font-size: 18px;   /* ajuste se quiser maior/menor */
+  color: #ffffff;    /* branco no rodapé; troque para #A855F7 se quiser lilás */
+}
