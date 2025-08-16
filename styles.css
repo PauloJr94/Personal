@@ -1663,3 +1663,34 @@ html {
     }
 }
 
+/* Ícone do WhatsApp maior */
+.contact-card i.fa-whatsapp {
+  font-size: 28px !important; /* aumenta só o WhatsApp */
+  color: #A855F7;  /* mantém lilás */
+  margin-bottom: 8px;
+}
+
+/* Ícone do Instagram continua como está */
+.contact-card i.fa-instagram {
+  font-size: 28px;
+  color: #A855F7;
+  margin-bottom: 8px;
+}
+
+.contact-card i {
+  color: #A855F7;  /* lilás */
+  font-size: 28px; /* tamanho igual Instagram */
+  margin-bottom: 8px;
+}
+
+/* Centralizar os ícones do rodapé e deixar brancos */
+.social-links {
+  display: flex;
+  justify-content: center;  /* centraliza horizontal */
+  gap: 20px; /* espaço entre ícones */
+}
+
+.social-links i {
+  font-size: 24px;
+  color: #ffffff;  /* branco */
+}
