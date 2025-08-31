@@ -791,6 +791,10 @@ body {
 }
 
 .footer-contact li {
+    display: flex;
+    align-items: center;
+    justify-content: center;  /* centraliza ícone + texto */
+    gap: 8px;                 /* espaço entre ícone e texto */
     color: #9CA3AF;
 }
 
